@@ -18,9 +18,9 @@
         }
 
         :root {
-            --fondo: #fcfbfa; /* Crema ultra limpio */
+            --fondo: #fcfbfa; 
             --tarjeta-clara: #ffffff; 
-            --tarjeta-crema: #f4ede4; /* El beige estético de Nintai */
+            --tarjeta-crema: #f4ede4; 
             --negro-editorial: #1e1e1e; 
             --gris-suave: #666666;
             --radio: 24px; 
@@ -39,7 +39,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- CONTENEDOR PRINCIPAL (BENTO GRID PARA WEB) --- */
+        /* --- CONTENEDOR PRINCIPAL (BENTO GRID) --- */
         .bento-container {
             max-width: 1200px; 
             width: 100%;
@@ -61,7 +61,7 @@
             justify-content: center;
         }
 
-        /* --- DISTRIBUCIÓN DE CASILLEROS EN ESCRITORIO --- */
+        /* --- DISTRIBUCIÓN ESCRITORIO --- */
         .profile-card {
             grid-column: span 2; 
             text-align: left;
@@ -99,7 +99,7 @@
             grid-column: span 3; 
         }
 
-        /* --- CONTENIDOS INTERNOS ESTILIZADOS --- */
+        /* --- CONTENIDOS --- */
         .profile-card h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 54px;
@@ -139,7 +139,6 @@
             font-weight: 300;
         }
 
-        /* --- LISTA DE PLANES --- */
         .section-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
@@ -162,9 +161,7 @@
             transition: all 0.3s ease;
         }
 
-        .plan-row:last-child {
-            border-bottom: none;
-        }
+        .plan-row:last-child { border-bottom: none; }
 
         .plan-info-left h4 {
             font-family: 'Cormorant Garamond', serif;
@@ -218,7 +215,6 @@
             border-bottom: none;
         }
 
-        /* --- INFO BOXES --- */
         .info-card h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 18px;
@@ -231,12 +227,9 @@
             margin-bottom: 10px;
         }
 
-        .info-card p {
-            font-size: 13px;
-            line-height: 1.6;
-        }
+        .info-card p { font-size: 13px; line-height: 1.6; }
 
-        /* --- NUESTRO ESPACIO Y SHOP (GRIDS DE IMÁGENES) --- */
+        /* --- GRIDS DE IMÁGENES --- */
         .space-grid-container, .shop-scroll-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr); 
@@ -265,9 +258,7 @@
             transition: transform 0.3s ease;
         }
 
-        .space-img {
-            height: 220px; 
-        }
+        .space-img { height: 220px; }
 
         .product-mini-card:hover .prod-img, .space-mini-card:hover .space-img {
             transform: scale(1.02);
@@ -280,12 +271,8 @@
             line-height: 1.2;
         }
 
-        .product-mini-card p {
-            font-size: 13px;
-            color: var(--gris-suave);
-        }
+        .product-mini-card p { font-size: 13px; color: var(--gris-suave); }
 
-        /* --- ENLACES DE REDES SOCIALES --- */
         .action-link {
             display: flex;
             flex-direction: row; 
@@ -320,28 +307,17 @@
             border: 1px solid rgba(30, 30, 30, 0.03);
         }
 
-        .social-card-wrapper:hover {
-            background-color: var(--tarjeta-crema);
-        }
+        .social-card-wrapper:hover { background-color: var(--tarjeta-crema); }
 
         .social-card-wrapper.dark-btn {
             background-color: var(--negro-editorial);
             border: none;
         }
 
-        .social-card-wrapper.dark-btn .action-link {
-            color: var(--fondo);
-        }
+        .social-card-wrapper.dark-btn .action-link { color: var(--fondo); }
+        .social-card-wrapper.dark-btn .arrow-icon { border-color: var(--fondo); }
+        .social-card-wrapper.dark-btn:hover { opacity: 0.9; }
 
-        .social-card-wrapper.dark-btn .arrow-icon {
-            border-color: var(--fondo);
-        }
-
-        .social-card-wrapper.dark-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* --- FOOTER GLOBAL --- */
         .global-footer {
             grid-column: span 3;
             text-align: center;
@@ -351,33 +327,46 @@
             letter-spacing: 1.5px;
         }
 
-        @media (max-width: 900px) {
-            .bento-container {
-                grid-template-columns: 1fr; 
-                gap: 16px;
+        /* ==========================================================================
+           Arreglo Responsivo Definitivo (CELULARES)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            body {
+                padding: 16px 12px;
             }
 
-            .profile-card, .marquee-card, .manifesto-card, .space-card, .membresias-card, .shop-card, .social-card-wrapper, .global-footer {
-                grid-column: span 1;
+            /* Forzamos que pasen a 1 sola columna vertical */
+            .bento-container {
+                grid-template-columns: 1fr !important; 
+                gap: 14px;
+            }
+
+            /* Todas las tarjetas pasan a ocupar el ancho completo */
+            .profile-card, .marquee-card, .manifesto-card, .space-card, .membresias-card, .info-card, .shop-card, .social-card-wrapper, .global-footer {
+                grid-column: span 1 !important;
+                grid-row: auto !important; 
             }
 
             .profile-card {
-                padding: 40px 20px;
+                padding: 35px 24px;
                 text-align: center;
             }
 
-            .profile-card h1 { font-size: 36px; }
+            .profile-card h1 { font-size: 38px; }
 
             .plan-row.featured-row {
                 margin: 4px -20px;
                 padding: 16px 20px;
             }
 
+            /* Scroll horizontal fluido para el espacio y la tienda en celulares */
             .space-grid-container, .shop-scroll-container {
-                display: flex; 
-                overflow-x: auto;
+                display: flex !important; 
+                overflow-x: auto !important;
                 scrollbar-width: none;
+                gap: 14px;
                 padding-bottom: 10px;
+                margin-top: 10px;
             }
 
             .space-grid-container::-webkit-scrollbar, .shop-scroll-container::-webkit-scrollbar { 
@@ -385,11 +374,12 @@
             }
             
             .product-mini-card, .space-mini-card {
-                min-width: 140px;
+                min-width: 220px !important; /* Tarjetas más anchas para que no se corten */
+                flex-shrink: 0;
             }
 
-            .space-img {
-                height: 180px;
+            .space-img, .prod-img {
+                height: 180px !important;
             }
         }
     </style>
@@ -416,22 +406,10 @@
         <div class="bento-card space-card">
             <div class="section-title">Nuestro Espacio</div>
             <div class="space-grid-container">
-                <div class="space-mini-card">
-                    <div class="space-img" style="background-image: url('estudio 1.jpg');"></div>
-                    <h5>Nintai</h5>
-                </div>
-                <div class="space-mini-card">
-                    <div class="space-img" style="background-image: url('estudio 2.jpg');"></div>
-                    <h5>Reformers Alta Gama</h5>
-                </div>
-                <div class="space-mini-card">
-                    <div class="space-img" style="background-image: url('estudio 3.jpg');"></div>
-                    <h5>Detalles y Calidez</h5>
-                </div>
-                <div class="space-mini-card">
-                    <div class="space-img" style="background-image: url('estudio 4.jpg');"></div>
-                    <h5>Movimiento Fluido</h5>
-                </div>
+                <div class="space-mini-card"><div class="space-img" style="background-image: url('estudio 1.jpg');"></div><h5>Nintai</h5></div>
+                <div class="space-mini-card"><div class="space-img" style="background-image: url('estudio 2.jpg');"></div><h5>Reformers Alta Gama</h5></div>
+                <div class="space-mini-card"><div class="space-img" style="background-image: url('estudio 3.jpg');"></div><h5>Detalles y Calidez</h5></div>
+                <div class="space-mini-card"><div class="space-img" style="background-image: url('estudio 4.jpg');"></div><h5>Movimiento Fluido</h5></div>
             </div>
         </div>
 
@@ -445,80 +423,38 @@
             <div class="section-title">PLANES</div>
             
             <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20anotarme%20a%20una%20Clase%20Suelta%20%F0%9F%A6%8B" target="_blank" class="plan-row">
-                <div class="plan-info-left">
-                    <h4>Clase Suelta</h4>
-                    <p>TU OPPORTUNIDAD PARA VIVIR LA EXPERIENCIA</p>
-                </div>
-                <div class="plan-price-right">
-                    <span class="price">$20.000</span>
-                    <div class="arrow-icon">→</div>
-                </div>
+                <div class="plan-info-left"><h4>Clase Suelta</h4><p>TU OPPORTUNIDAD PARA VIVIR LA EXPERIENCIA</p></div>
+                <div class="plan-price-right"><span class="price">$20.000</span><div class="arrow-icon">→</div></div>
             </a>
 
             <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20anotarme%20al%20Plan%204%20Clases%20%F0%9F%A6%8B" target="_blank" class="plan-row">
-                <div class="plan-info-left">
-                    <h4>Plan 4 Clases</h4>
-                    <p>1 vez por semana </p>
-                </div>
-                <div class="plan-price-right">
-                    <span class="price">$40.000</span>
-                    <div class="arrow-icon">→</div>
-                </div>
+                <div class="plan-info-left"><h4>Plan 4 Clases</h4><p>1 vez por semana </p></div>
+                <div class="plan-price-right"><span class="price">$40.000</span><div class="arrow-icon">→</div></div>
             </a>
 
             <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20anotarme%20al%20Plan%208%20Clases%20%F0%9F%A6%8B" target="_blank" class="plan-row">
-                <div class="plan-info-left">
-                    <h4>Plan 8 Clases</h4>
-                    <p>2 veces por semana </p>
-                </div>
-                <div class="plan-price-right">
-                    <span class="price">$54.000</span>
-                    <div class="arrow-icon">→</div>
-                </div>
+                <div class="plan-info-left"><h4>Plan 8 Clases</h4><p>2 veces por semana </p></div>
+                <div class="plan-price-right"><span class="price">$54.000</span><div class="arrow-icon">→</div></div>
             </a>
 
             <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20anotarme%20al%20Plan%2012%20Clases%20(El%20más%20elegido)%20%F0%9F%A6%8B" target="_blank" class="plan-row featured-row">
-                <div class="plan-info-left">
-                    <h4>Plan 12 Clases <em>(El más elegido)</em></h4>
-                    <p>3 veces por semana / Recomendado</p>
-                </div>
-                <div class="plan-price-right">
-                    <span class="price" style="font-weight: 500;">$64.000</span>
-                    <div class="arrow-icon" style="background-color: var(--negro-editorial); color: #fff;">→</div>
-                </div>
+                <div class="plan-info-left"><h4>Plan 12 Clases <em>(El más elegido)</em></h4><p>3 veces por semana / Recomendado</p></div>
+                <div class="plan-price-right"><span class="price" style="font-weight: 500;">$64.000</span><div class="arrow-icon" style="background-color: var(--negro-editorial); color: #fff;">→</div></div>
             </a>
 
             <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20anotarme%20al%20Plan%2016%20Clases%20%F0%9F%A6%8B" target="_blank" class="plan-row">
-                <div class="plan-info-left">
-                    <h4>Plan 16 Clases</h4>
-                    <p>4 veces por semana / Full focus</p>
-                </div>
-                <div class="plan-price-right">
-                    <span class="price">$82.000</span>
-                    <div class="arrow-icon">→</div>
-                </div>
+                <div class="plan-info-left"><h4>Plan 16 Clases</h4><p>4 veces por semana / Full focus</p></div>
+                <div class="plan-price-right"><span class="price">$82.000</span><div class="arrow-icon">→</div></div>
             </a>
 
             <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20anotarme%20al%20Plan%2020%20Clases%20%F0%9F%A6%8B" target="_blank" class="plan-row">
-                <div class="plan-info-left">
-                    <h4>Plan 20 Clases</h4>
-                    <p>5 veces por semana / Intensivo</p>
-                </div>
-                <div class="plan-price-right">
-                    <span class="price">$100.000</span>
-                    <div class="arrow-icon">→</div>
-                </div>
+                <div class="plan-info-left"><h4>Plan 20 Clases</h4><p>5 veces por semana / Intensivo</p></div>
+                <div class="plan-price-right"><span class="price">$100.000</span><div class="arrow-icon">→</div></div>
             </a>
 
             <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20consultar%20por%20el%20Plan%20Personalizado%20(vos%20y%20la%20profe)%20%F0%9F%A6%8B" target="_blank" class="plan-row">
-                <div class="plan-info-left">
-                    <h4>Plan Personalizado</h4>
-                    <p>Clases exclusivas: Vos y la Profe</p>
-                </div>
-                <div class="plan-price-right">
-                    <span class="price" style="font-size:13px; color: var(--gris-suave); font-family: 'Montserrat', sans-serif;">Consultar</span>
-                    <div class="arrow-icon">→</div>
-                </div>
+                <div class="plan-info-left"><h4>Plan Personalizado</h4><p>Clases exclusivas: Vos y la Profe</p></div>
+                <div class="plan-price-right"><span class="price" style="font-size:13px; color: var(--gris-suave); font-family: 'Montserrat', sans-serif;">Consultar</span><div class="arrow-icon">→</div></div>
             </a>
         </div>
 
@@ -530,69 +466,37 @@
 
         <div class="bento-card social-card-wrapper">
             <div class="social-img-box" style="background-image: url('estudio 3.jpg');"></div>
-            <a href="https://instagram.com/nintaipilates" target="_blank" class="action-link">
-                <span>Instagram </span>
-                <span class="arrow-icon">↗</span>
-            </a>
+            <a href="https://instagram.com/nintaipilates" target="_blank" class="action-link"><span>Instagram </span><span class="arrow-icon">↗</span></a>
         </div>
 
         <div class="bento-card social-card-wrapper">
             <div class="social-img-box" style="background-image: url('estudio 1.jpg');"></div>
-            <a href="https://www.tiktok.com/@nintaipilatess" target="_blank" class="action-link">
-                <span>TikTok </span>
-                <span class="arrow-icon">↗</span>
-            </a>
+            <a href="https://www.tiktok.com/@nintaipilatess" target="_blank" class="action-link"><span>TikTok </span><span class="arrow-icon">↗</span></a>
         </div>
 
         <div class="bento-card social-card-wrapper dark-btn">
             <div class="social-img-box" style="background-image: url('estudio 4.jpg');"></div>
-            <a href="https://wa.me/5491126908510" target="_blank" class="action-link">
-                <span>WhatsApp </span>
-                <span class="arrow-icon">↗</span>
-            </a>
+            <a href="https://wa.me/5491126908510" target="_blank" class="action-link"><span>WhatsApp </span><span class="arrow-icon">↗</span></a>
         </div>
 
         <div class="bento-card shop-card">
             <div class="section-title">Nintai Shop</div>
             <div class="shop-scroll-container">
-                <div class="product-mini-card">
-                    <div class="prod-img" style="background-image: url('medias.jpg');"></div>
-                    <h5>Medias Antideslizantes</h5>
-                    <p>$5.000</p>
-                </div>
-                <div class="product-mini-card">
-                    <div class="prod-img" style="background-image: url('botella chica nintai.jpeg');"></div>
-                    <h5>Botella Térmica 250ml</h5>
-                    <p>$20.000</p>
-                </div>
-                <div class="product-mini-card">
-                    <div class="prod-img" style="background-image: url('botella grande nintai.jpeg');"></div>
-                    <h5>Botella Térmica 500ml</h5>
-                    <p>$24.000</p>
-                </div>
-                <div class="product-mini-card">
-                    <div class="prod-img" style="background-image: url('taza nintai.jpeg');"></div>
-                    <h5>Taza Studio</h5>
-                    <p>$11.000</p>
-                </div>
-                <div class="product-mini-card">
-                    <div class="prod-img" style="background-image: url('remera white nintai.jpeg');"></div>
-                    <h5>Remera White</h5>
-                    <p>$25.000</p>
-                </div>
+                <div class="product-mini-card"><div class="prod-img" style="background-image: url('medias.jpg');"></div><h5>Medias Antideslizantes</h5><p>$5.000</p></div>
+                <div class="product-mini-card"><div class="prod-img" style="background-image: url('botella chica nintai.jpeg');"></div><h5>Botella Térmica 250ml</h5><p>$20.000</p></div>
+                <div class="product-mini-card"><div class="prod-img" style="background-image: url('botella grande nintai.jpeg');"></div><h5>Botella Térmica 500ml</h5><p>$24.000</p></div>
+                <div class="product-mini-card"><div class="prod-img" style="background-image: url('taza nintai.jpeg');"></div><h5>Taza Studio</h5><p>$11.000</p></div>
+                <div class="product-mini-card"><div class="prod-img" style="background-image: url('remera white nintai.jpeg');"></div><h5>Remera White</h5><p>$25.000</p></div>
             </div>
         </div>
 
         <a href="https://wa.me/5491126908510?text=¡Hola!%20Quiero%20consultar%20stock%20del%20Shop%20%F0%9F%A6%8B" target="_blank" class="bento-card action-link dark-btn" style="grid-column: span 3; text-align: center; justify-content: center; padding: 20px 0;">
-            <span>Consultar Stock Shop</span>
-            <span style="font-size: 12px; margin-left: 10px;">→</span>
+            <span>Consultar Stock Shop</span><span style="font-size: 12px; margin-left: 10px;">→</span>
         </a>
 
         <div class="global-footer">
             &copy; 2026 NINTAI PILATES • CONTEMPORARY MOVEMENT
         </div>
-
     </div>
-
 </body>
 </html>
